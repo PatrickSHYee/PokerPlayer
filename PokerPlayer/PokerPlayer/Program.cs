@@ -8,24 +8,85 @@ namespace PokerPlayer
 {
     class Program
     {
-        public static Deck dealerDeck;
+        //static void Main(string[] args)
+        //{
+        //    PokerPlayer player = new PokerPlayer();
+        //    List<Card> testHand = new List<Card>();
+        //    Deck dealerDeck = new Deck();
+        //    // lets shuffle the deck 100 times
+        //    for (int s = 0; s < 100; s++)
+        //    {
+        //        dealerDeck.Shuffle();
+        //    }
+
+        //    for (int i = 0; i < 5; i++)
+        //    {
+        //        player.DrawHand(dealerDeck.Deal(5));
+        //        player.ShowHand();
+        //    }
+        //    Console.ReadKey();
+        //}
 
         static void Main(string[] args)
         {
             PokerPlayer player = new PokerPlayer();
             List<Card> testHand = new List<Card>();
-            dealerDeck = new Deck();
-            // lets shuffle the deck 100 times
-            for (int s = 0; s < 100; s++)
-            {
-                dealerDeck.Shuffle();
-            }
 
-            for (int i = 0; i < 5; i++)
-            {
-                player.DrawHand(dealerDeck.Deal(5));
-                player.ShowHand();
-            }
+            // straight test
+            testHand.Add(new Card((int)Rank.Two, (int)Suit.Club));
+            testHand.Add(new Card((int)Rank.Three, (int)Suit.Diamond));
+            testHand.Add(new Card((int)Rank.Five, (int)Suit.Heart));
+            testHand.Add(new Card((int)Rank.Four, (int)Suit.Club));
+            testHand.Add(new Card((int)Rank.Six, (int)Suit.Diamond));
+            player.DrawHand(testHand);
+            player.ShowHand();
+            Console.WriteLine();
+
+            testHand.Clear();
+            testHand.Add(new Card((int)Rank.Two, (int)Suit.Club));
+            testHand.Add(new Card((int)Rank.Three, (int)Suit.Diamond));
+            testHand.Add(new Card((int)Rank.King, (int)Suit.Heart));
+            testHand.Add(new Card((int)Rank.Four, (int)Suit.Club));
+            testHand.Add(new Card((int)Rank.Ace, (int)Suit.Diamond));
+            player.DrawHand(testHand);
+            player.ShowHand();
+            Console.WriteLine();
+
+            testHand.Clear();
+            testHand.Add(new Card((int)Rank.Queen, (int)Suit.Club));
+            testHand.Add(new Card((int)Rank.Jack, (int)Suit.Diamond));
+            testHand.Add(new Card((int)Rank.King, (int)Suit.Heart));
+            testHand.Add(new Card((int)Rank.Ace, (int)Suit.Club));
+            testHand.Add(new Card((int)Rank.Ten, (int)Suit.Diamond));
+            testHand.Clear();
+            testHand.Add(new Card(Rank.Queen, Suit.Club));
+            testHand.Add(new Card(Rank.Jack, Suit.Diamond));
+            testHand.Add(new Card(Rank.King, Suit.Heart));
+            testHand.Add(new Card(Rank.Ace, Suit.Club));
+            testHand.Add(new Card(Rank.Ten, Suit.Diamond));
+            player.DrawHand(testHand);
+            player.ShowHand();
+            Console.WriteLine();
+
+            testHand.Clear();
+            // four of a kind test
+            testHand.Add(new Card((int)Rank.Ten, (int)Suit.Club));
+            testHand.Add(new Card((int)Rank.Ten, (int)Suit.Diamond));
+            testHand.Add(new Card((int)Rank.Ten, (int)Suit.Heart));
+            testHand.Add(new Card((int)Rank.Ten, (int)Suit.Spade));
+            testHand.Add(new Card((int)Rank.Queen, (int)Suit.Spade));
+            player.DrawHand(testHand);
+            player.ShowHand();
+            Console.WriteLine();
+
+            testHand.Clear();
+            testHand.Add(new Card(Rank.Ten, Suit.Club));
+            testHand.Add(new Card(Rank.Ten, Suit.Diamond));
+            testHand.Add(new Card(Rank.Ten, Suit.Club));
+            testHand.Add(new Card(Rank.Ten, Suit.Spade));
+            testHand.Add(new Card(Rank.Queen, Suit.Spade));
+            player.DrawHand(testHand); ;
+            player.ShowHand();
             Console.ReadKey();
         }
     }
@@ -78,6 +139,7 @@ namespace PokerPlayer
             ListOfCards = CurrentHand;
             HighestCard = ListOfCards.OrderByDescending(x => x.Ranked).First();
             MyHand = "High Card";
+            HandRank = HandType.HighCard;
 
             // the Poker player does there checks with my hand of what it is
             if (HasPair())

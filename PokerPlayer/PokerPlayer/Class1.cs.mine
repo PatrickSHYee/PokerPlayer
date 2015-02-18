@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NUnit.Framework;
+
+namespace PokerPlayer
+{
+    [TestFixture]
+    class Class1
+    {
+        PokerPlayer player;
+        List<Card> testCase;
+
+        [SetUp]
+        public void setup()
+        {
+            player = new PokerPlayer();
+            testCase = new List<Card>();
+        }
+    }
+}
